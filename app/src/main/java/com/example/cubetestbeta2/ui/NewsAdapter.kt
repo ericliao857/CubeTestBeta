@@ -13,7 +13,8 @@ import kotlin.math.min
  */
 class NewsAdapter(
     val news: List<News>,
-    val showItems: Int = news.size
+    val showItems: Int = news.size,
+    val onItemClick: (news: News) -> Unit
 ) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     class ViewHolder(private val binding: ItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(news: News) {
@@ -32,7 +33,11 @@ class NewsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(news = news[position])
+        holder.itemView.setOnClickListener {
+            onItemClick(news[position])
+        }
     }
+
     companion object {
         // 首頁最多三筆
         const val HOME_COUNT = 3

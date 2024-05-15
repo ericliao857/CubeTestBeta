@@ -9,5 +9,20 @@
         android:id="@+id/listFragment"
         android:name="com.example.cubetestbeta2.ui.ListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/to_news_fragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.example.cubetestbeta2.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news">
+
+        <argument
+            android:name="newsUrl"
+            app:argType="string" />
+
+    </fragment>
 </navigation>

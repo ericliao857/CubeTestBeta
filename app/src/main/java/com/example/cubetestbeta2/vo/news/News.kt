@@ -1,15 +1,14 @@
 package com.example.cubetestbeta2.vo.news
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class News(
-    @SerializedName("begin")
-    val begin: Any,
     @SerializedName("description")
     val description: String,
-    @SerializedName("end")
-    val end: Any,
     @SerializedName("files")
     val files: List<File>,
     @SerializedName("id")
@@ -24,4 +23,4 @@ data class News(
     val title: String,
     @SerializedName("url")
     val url: String
-)
+): Parcelable
