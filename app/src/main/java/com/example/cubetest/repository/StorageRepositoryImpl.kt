@@ -4,6 +4,7 @@ import com.example.cubetest.data.SharedPreferences
 import com.example.cubetest.vo.Language
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 class StorageRepositoryImpl(
@@ -19,5 +20,9 @@ class StorageRepositoryImpl(
 
     override fun getLanguageCode(): String {
         return sharedPreferences.getLanguage() ?: Language.ZH_TW.languageCode
+    }
+
+    override fun getLanguageFlow(): Flow<String> {
+        return sharedPreferences.getLanguageFlow()
     }
 }
