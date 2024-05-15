@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.cubetestbeta2'
+    namespace 'com.example.cubetest'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.cubetestbeta2"
+        applicationId "com.example.cubetest"
         minSdk 24
         targetSdk 34
         versionCode 1

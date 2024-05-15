@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CubeTestBeta2"
+rootProject.name = "CubeTest"
 include ':app'
