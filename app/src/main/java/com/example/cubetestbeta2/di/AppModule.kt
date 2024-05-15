@@ -1,6 +1,10 @@
 package com.example.cubetestbeta2.di
 
+import android.content.Context
 import com.example.cubetestbeta2.data.ApiService
+import com.example.cubetestbeta2.data.SharedPreferences
+import com.example.cubetestbeta2.repository.StorageRepository
+import com.example.cubetestbeta2.repository.StorageRepositoryImpl
 import com.example.cubetestbeta2.repository.TravelTaipeiRepository
 import com.example.cubetestbeta2.repository.TravelTaipeiRepositoryImpl
 import okhttp3.OkHttpClient
@@ -34,10 +38,14 @@ fun provideRetrofit(
 
 fun provideService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 
+fun provideSharedPref(context: Context): SharedPreferences = SharedPreferences(context)
+
 val appModule = module {
     single { providerOkHttp() }
     single { provideConverterFactory() }
     single { provideRetrofit(get(), get()) }
     single { provideService(get()) }
+    single { provideSharedPref(get()) }
     single<TravelTaipeiRepository> { TravelTaipeiRepositoryImpl(get()) }
+    single<StorageRepository> { StorageRepositoryImpl(get()) }
 }

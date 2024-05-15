@@ -1,5 +1,6 @@
 package com.example.cubetestbeta2.ui.list
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -35,6 +36,7 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe()
+        viewModel.refresh()
     }
 
     override fun onDestroyView() {

@@ -1,8 +1,10 @@
 package com.example.cubetestbeta2.ui
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,6 +18,7 @@ import com.example.cubetestbeta2.R
 import com.example.cubetestbeta2.databinding.ActivityMainBinding
 import com.example.cubetestbeta2.ui.attraction.AttractionFragmentArgs
 import com.example.cubetestbeta2.vm.MainViewModel
+import com.example.cubetestbeta2.vo.Language
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -50,6 +53,10 @@ class MainActivity : AppCompatActivity() {
         binding.ibBack.setOnClickListener {
             navController.navigateUp()
         }
+        // 選擇語言
+        binding.ibMenu.setOnClickListener {
+            showLanguageDialog()
+        }
     }
 
     private fun setNavigation() {
@@ -63,5 +70,22 @@ class MainActivity : AppCompatActivity() {
                 binding.tvTitle.text = bundle?.getString("title")
             }
         }
+    }
+
+
+    /**
+     * 顯示更改語言Dialog
+     */
+    private fun showLanguageDialog() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        val languages = Language.entries
+        val languageTexts = languages.map { it.languageName }.toTypedArray()
+        builder.setTitle(getString(R.string.set_language))
+            .setItems(languageTexts) { dialog, which ->
+                viewModel.setLanguageCode(languages[which])
+                dialog.dismiss()
+            }
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 }
