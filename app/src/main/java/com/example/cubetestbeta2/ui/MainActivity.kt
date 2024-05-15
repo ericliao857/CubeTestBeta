@@ -1,4 +1,4 @@
-package com.example.cubetestbeta2
+package com.example.cubetestbeta2.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +14,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import com.example.cubetestbeta2.R
 import com.example.cubetestbeta2.databinding.ActivityMainBinding
+import com.example.cubetestbeta2.ui.attraction.AttractionFragmentArgs
 import com.example.cubetestbeta2.vm.MainViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -55,7 +56,12 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, bundle ->
             binding.ibMenu.visibility = if (destination.id == R.id.listFragment) View.VISIBLE else View.INVISIBLE
             binding.ibBack.visibility = if (destination.id != R.id.listFragment) View.VISIBLE else View.INVISIBLE
-            binding.tvTitle.text = destination.label
+            // 旅遊景點的Title要根據景點名稱顯示
+            if (destination.id == R.id.listFragment) {
+                binding.tvTitle.text = destination.label
+            } else {
+                binding.tvTitle.text = bundle?.getString("title")
+            }
         }
     }
 }

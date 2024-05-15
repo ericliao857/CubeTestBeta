@@ -1,4 +1,4 @@
-package com.example.cubetestbeta2.ui
+package com.example.cubetestbeta2.ui.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cubetestbeta2.R
 import com.example.cubetestbeta2.databinding.FragmentListBinding
 import com.example.cubetestbeta2.vm.MainViewModel
 import com.example.cubetestbeta2.vo.attraction.Attraction
@@ -28,7 +29,6 @@ class ListFragment : Fragment() {
     ): View {
         _binding = FragmentListBinding.inflate(inflater, container, false)
         val view = binding.root
-        // Inflate the layout for this fragment
         return view
     }
 
@@ -48,9 +48,6 @@ class ListFragment : Fragment() {
                 viewModel.uiState.collect {
                     showLoading(it.isLoading)
                     setNewsList(it.news)
-                    if (it.attractions.isEmpty()) {
-
-                    }
                     setAttractionList(it.attractions)
                 }
             }
@@ -69,20 +66,31 @@ class ListFragment : Fragment() {
         binding.rvNews.adapter = adapter
     }
 
+    /**
+     * 前往訊息頁面
+     */
+    private fun goToNewDetail(news: News) {
+        val directions = ListFragmentDirections.toWebViewFragment(news.url, title = getString(R.string.news))
+        findNavController().navigate(directions)
+    }
+
     private fun setAttractionList(attractions: List<Attraction>) {
-        val adapter = AttractionAdapter(attractions = attractions)
+        val adapter = AttractionAdapter(attractions = attractions) {
+            goToAttractionDetail(it)
+        }
         binding.rvAttraction.layoutManager = LinearLayoutManager(requireContext())
         binding.rvAttraction.adapter = adapter
     }
 
     /**
-     * 前往訊息頁面
+     * 前往旅遊景點頁面
      */
-    private fun goToNewDetail(news: News) {
-        val directions = ListFragmentDirections.toNewsFragment(news.url)
+    private fun goToAttractionDetail(attraction: Attraction) {
+        val directions = ListFragmentDirections.toAttractionFragment(
+            attraction = attraction,
+            title = attraction.name
+        )
         findNavController().navigate(directions)
     }
 
-    companion object {
-    }
 }

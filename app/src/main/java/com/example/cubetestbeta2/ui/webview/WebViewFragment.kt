@@ -1,6 +1,5 @@
-package com.example.cubetestbeta2
+package com.example.cubetestbeta2.ui.webview
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,29 +7,22 @@ import android.view.ViewGroup
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.example.cubetestbeta2.databinding.FragmentNewsBinding
+import com.example.cubetestbeta2.databinding.FragmentWebviewBinding
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
- * Use the [NewsFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * WebView頁面
  */
-class NewsFragment : Fragment() {
-    private var _binding: FragmentNewsBinding? = null
-    private val binding: FragmentNewsBinding get() = _binding!!
-    private val args: NewsFragmentArgs by navArgs()
+class WebViewFragment : Fragment() {
+    private var _binding: FragmentWebviewBinding? = null
+    private val binding: FragmentWebviewBinding get() = _binding!!
+    private val args: WebViewFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNewsBinding.inflate(inflater, container, false)
+        _binding = FragmentWebviewBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }

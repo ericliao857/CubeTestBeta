@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ListFragment">
+    tools:context=".ui.list.ListFragment">
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:indeterminateTint="@color/blue_89CFF0"
+        android:indeterminateTint="@color/blue_026FE2"
         android:indeterminate="true"
         android:layout_marginHorizontal="@dimen/dp_2"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,8 +1,11 @@
 package com.example.cubetestbeta2.vo.attraction
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Attraction(
     @SerializedName("address")
     val address: String,
@@ -18,8 +21,6 @@ data class Attraction(
     val facebook: String,
     @SerializedName("fax")
     val fax: String,
-    @SerializedName("files")
-    val files: List<Any>,
     @SerializedName("friendly")
     val friendly: List<Friendly>,
     @SerializedName("id")
@@ -36,8 +37,6 @@ data class Attraction(
     val months: String,
     @SerializedName("name")
     val name: String,
-    @SerializedName("name_zh")
-    val nameZh: Any,
     @SerializedName("nlat")
     val nlat: Double,
     @SerializedName("official_site")
@@ -62,4 +61,4 @@ data class Attraction(
     val url: String,
     @SerializedName("zipcode")
     val zipcode: String
-)
+): Parcelable

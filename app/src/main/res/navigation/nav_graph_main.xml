@@ -5,24 +5,50 @@
     android:id="@+id/nav_main"
     app:startDestination="@id/listFragment">
 
+    <action
+        android:id="@+id/to_web_view_fragment"
+        app:destination="@id/webViewFragment" />
+
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.example.cubetestbeta2.ui.ListFragment"
+        android:name="com.example.cubetestbeta2.ui.list.ListFragment"
         android:label="@string/travel_taipei"
         tools:layout="@layout/fragment_list" >
+
         <action
-            android:id="@+id/to_news_fragment"
-            app:destination="@id/newsFragment" />
+            android:id="@+id/to_attraction_fragment"
+            app:destination="@id/attractionFragment" />
     </fragment>
     <fragment
-        android:id="@+id/newsFragment"
-        android:name="com.example.cubetestbeta2.NewsFragment"
-        android:label="@string/news"
-        tools:layout="@layout/fragment_news">
+        android:id="@+id/webViewFragment"
+        android:name="com.example.cubetestbeta2.ui.webview.WebViewFragment"
+        tools:layout="@layout/fragment_webview">
+
+        <argument
+            android:name="title"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="WebView" />
 
         <argument
             android:name="newsUrl"
             app:argType="string" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/attractionFragment"
+        android:name="com.example.cubetestbeta2.ui.attraction.AttractionFragment"
+        android:label="旅遊景點"
+        tools:layout="@layout/fragment_attraction">
+
+        <argument
+            android:name="title"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="旅遊景點" />
+        <argument
+            android:name="attraction"
+            app:argType="com.example.cubetestbeta2.vo.attraction.Attraction" />
 
     </fragment>
 </navigation>
