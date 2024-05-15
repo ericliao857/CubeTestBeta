@@ -25,7 +25,7 @@ data class Attraction(
     @SerializedName("id")
     val id: Int,
     @SerializedName("images")
-    val images: List<Image>,
+    val images: List<Image>?,
     @SerializedName("introduction")
     val introduction: String,
     @SerializedName("links")

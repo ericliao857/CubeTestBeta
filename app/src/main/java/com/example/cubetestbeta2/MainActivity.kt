@@ -30,17 +30,5 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        observe()
-    }
-
-    private fun observe() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect {
-                    Log.d("TAG", "observe: ${it.attractions}")
-                    // Update UI elements
-                }
-            }
-        }
     }
 }

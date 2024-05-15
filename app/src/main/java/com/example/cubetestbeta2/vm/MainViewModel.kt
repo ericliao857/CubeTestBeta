@@ -14,8 +14,8 @@ import kotlinx.coroutines.launch
 
 data class UiState(
     val isLoading: Boolean = true,
-    val attractions: List<Attraction>? = null,
-    val news: List<News>? = null
+    val attractions: List<Attraction> = emptyList(),
+    val news: List<News> = emptyList()
 )
 
 class MainViewModel(
